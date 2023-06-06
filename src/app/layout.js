@@ -1,5 +1,6 @@
-import './globals.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from 'next/font/google'
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +12,35 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container-fluid">
+            <Link className="navbar-brand" href='/'>
+              Práctica 1 - Software Avanzado
+            </Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link" href='/rest'>
+                    REST
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href='/soap'>
+                    SOAP
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
